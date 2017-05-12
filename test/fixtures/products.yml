@@ -11,3 +11,9 @@ two:
   description: MyText
   image_url: 7apps.jpg
   price: 9.99
+
+ruby:
+  title: Programming Ruby 2.4.1
+  description: A very best book on Ruby programming language
+  image_url: rails.png
+  price: 10.99
