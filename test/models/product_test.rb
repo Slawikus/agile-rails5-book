@@ -13,7 +13,7 @@ class ProductTest < ActiveSupport::TestCase
 
   test "product price must be positive" do
     product = Product.new(
-      title: "My book",
+      title: "My book with a long title",
       description: "bla",
       image_url: "zzz.jpg"
     )
@@ -34,7 +34,7 @@ class ProductTest < ActiveSupport::TestCase
 
   def new_product(image_url)
     Product.new(
-      title: "My book",
+      title: "My book with a long title",
       description: "bla",
       price: 1,
       image_url: image_url
@@ -63,5 +63,20 @@ class ProductTest < ActiveSupport::TestCase
 
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+  end
+
+  test "product is not valid for short titles" do
+    product = Product.new(
+      title: "My book",
+      description: "bla",
+      image_url: "zzz.jpg",
+      price: 10.99
+    )
+
+    assert product.invalid?
+    assert_equal ['Title is too short'], product.errors[:title]
+
+    product.title = "A very long title"
+    assert product.valid?
   end
 end
