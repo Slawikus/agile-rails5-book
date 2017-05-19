@@ -2,6 +2,7 @@
   "name": "depot",
   "private": true,
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1"
   }
 }
