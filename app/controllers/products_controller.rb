@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
         format.json { render :show, status: :ok, location: @product }
 
         @products = Product.order(:title)
-        @counter = session[:counter]
+        @counter = session[:counter] || 0
         ActionCable.server.broadcast 'products',
           html: render_to_string('store/index', layout: false)
       else
